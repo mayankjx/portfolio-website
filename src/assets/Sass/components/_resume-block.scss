@@ -1,0 +1,19 @@
+.resumeBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 200px;
+  margin: 0;
+  background: floralwhite;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.resumeBlock img {
+  height: 50px;
+}
+
+.resumeBlock a {
+  text-decoration: none;
+  color: black;
+}

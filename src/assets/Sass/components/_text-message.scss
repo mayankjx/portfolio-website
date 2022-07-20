@@ -1,0 +1,37 @@
+@import "../base/reset";
+@import "../base/fonts";
+
+.message {
+  opacity: 1;
+  flex: auto;
+  height: auto;
+  max-width: 70%;
+  max-height: 70.25rem;
+  background: rgba(206, 206, 206, 0.5);
+  overflow: hidden;
+  display: inline-block;
+  margin: 0 0 0.225rem 0;
+  padding: 0.9rem 0.95rem;
+  line-height: 1.25rem;
+  border-radius: 1.25rem;
+  transform-origin: 0 100%;
+  vertical-align: middle;
+}
+
+.senderMessage {
+  opacity: 1;
+  flex: auto;
+  max-width: 60%;
+  max-height: 20.25rem;
+  background: #1982fc;
+  color: white;
+  overflow: hidden;
+  display: inline-block;
+  margin: 0 0 0.225rem 0;
+  padding: 0.9rem 0.95rem;
+  line-height: 1.25rem;
+  border-radius: 1.25rem;
+  transform-origin: 0 100%;
+  vertical-align: middle;
+  align-self: end;
+}
