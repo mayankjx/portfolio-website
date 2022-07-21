@@ -10,9 +10,10 @@
   box-sizing: border-box;
   background-color: rgb(236, 236, 236);
   width: 100vw;
-  padding: 25px;
+  padding: 25px 55px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  position: relative;
 }
 
 #message {
@@ -25,14 +26,29 @@
 }
 
 .sendControls button {
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-radius: 10px;
   border: none;
   outline: none;
   color: white;
   background: #1982fc;
-  padding: 10px 20px;
+  padding: 10px;
   cursor: pointer;
+}
+
+.dropdown {
+  .dropdownBtn {
+    display: none;
+  }
+
+  .predefinedBtn {
+    display: flex;
+    flex-direction: row;
+
+    button {
+      margin-right: 10px;
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -40,5 +56,41 @@
     font-size: 1rem;
     padding: 5px 12px;
     width: 70%;
+  }
+
+  .sendControls {
+    padding: 10px;
+    font-size: 1rem;
+
+    input {
+      padding: 10px 0px;
+    }
+  }
+}
+
+@media screen and (max-width: 1244px) {
+  .dropdown {
+    .predefinedBtn {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      bottom: 70%;
+      right: 20%;
+      background-color: white;
+      padding: 20px 30px;
+      border-radius: 15px;
+
+      button {
+        margin-bottom: 10px;
+      }
+    }
+
+    .dropdownBtn {
+      display: block;
+    }
+  }
+
+  .dropdown:hover .predefinedBtn {
+    display: flex;
   }
 }

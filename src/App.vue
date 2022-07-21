@@ -16,6 +16,7 @@
         >
       </div>
     </div>
+
     <div ref="controlArea" class="controlArea">
       <div class="sendControls">
         <input
@@ -25,11 +26,18 @@
           v-model="message"
           placeholder="Message"
           ref="messageBox"
+          @keyup.enter="sendText"
         />
-        <button @click="aboutMe">About You?</button>
-        <button @click="resume">Resume?</button>
-        <button @click="yourWork">Your works?</button>
-        <button @click="contact">Contact?</button>
+        <div class="dropdown">
+          <button class="dropdownBtn">Hover here</button>
+          <div class="predefinedBtn">
+            <button @click="aboutMe">About You?</button>
+            <button @click="yourSkills">Your Skills?</button>
+            <button @click="resume">Resume?</button>
+            <button @click="yourWork">Your works?</button>
+            <button @click="contact">Contact?</button>
+          </div>
+        </div>
         <button @click="sendText">Send</button>
       </div>
     </div>
@@ -49,6 +57,13 @@ export default {
       nodeNumber: 8,
       message: "",
     };
+  },
+  mounted() {
+    window.addEventListener("keypress", (e) => {
+      console.log(e);
+      e.preventDefault();
+      this.$refs.messageBox.focus();
+    });
   },
   methods: {
     async addNewTextMessage(message, className) {
@@ -97,13 +112,95 @@ export default {
       }
 
       const messages = [
-        "Currently I m pursuing BTech degree in Computer Science and Engineering",
+        "Currently I m pursuing BTech degree in Computer Science and Engineering at IIITDM, Jabalpur",
         "I m interested in web development and competitive coding",
-        "I also love to read books about psychology",
+        "I like to code things from scratch, and enjoy bringing ideas to life.",
+        "I m naturally curious and perpetually working on improving myself.",
+        "Apart from that I love to read books",
       ];
       await this.addNewTextMessage("Tell me more about you", "senderMessage");
       for (let message of messages) {
         const animation = await this.addNewTextMessage(message, "message");
+      }
+
+      this.$refs.controlArea.style.opacity = "1";
+      for (var i = 0; i < nodes.length; i++) {
+        nodes[i].disabled = false;
+      }
+    },
+
+    async renderSkillCard(details) {
+      const { image, title, description, tools } = details;
+
+      const newSkillCard = document.createElement("div");
+      newSkillCard.classList.add("message");
+      newSkillCard.classList.add(`text${this.nodeNumber}`);
+
+      newSkillCard.innerHTML = `
+          <div class="skillCard">
+            <div class="skillHeader">
+              <img
+                src=${image}
+                alt="logo"
+                srcset=""
+              />
+              <p class="title">${title}</p>
+            </div>
+            <div class="skillContent">
+              <p class="description">
+                ${description}
+              </p>
+              <p class="tools"><span class="highlight">Tech: </span>${tools}</p>
+            </div>
+          </div>`;
+
+      const container = this.$refs.textContainer;
+      container.appendChild(newSkillCard);
+
+      newSkillCard.scrollIntoView();
+      container.scrollTop = newSkillCard.scrollHeight;
+
+      const finishAnimation = await animate(
+        `.text${this.nodeNumber}`,
+        {
+          opacity: 1,
+          transform: ["scale(0.1)", "translateY(-10px) scale(1)"],
+        },
+        { endDelay: 1.5 },
+        { duration: 0.4 },
+        { easing: "ease-out" }
+      ).finished;
+      this.nodeNumber = this.nodeNumber + 1;
+      return finishAnimation;
+    },
+
+    async yourSkills() {
+      this.$refs.controlArea.style.opacity = "0.7";
+
+      let nodes = this.$refs.controlArea.getElementsByTagName("*");
+      for (var i = 0; i < nodes.length; i++) {
+        nodes[i].disabled = true;
+      }
+
+      await this.addNewTextMessage("What are you good at?", "senderMessage");
+      const skills = [
+        {
+          image: "https://i.ibb.co/Lxd6WmJ/58482acecef1014c0b5e4a1e-1.png",
+          title: "Frontend Developer",
+          description: `The main area of my interest is frontend development.I have Knowledge
+                about HTML,CSS,JS, Vue and Nuxt frameworks`,
+          tools: "Sass, Figma, Bootstrap, Git/Gitlab",
+        },
+        {
+          image: "https://i.ibb.co/2sr1qy4/Png-Item-5202823.png",
+          title: "Backend Developer",
+          description: `I've also worked on backend layer of code from working on databases to writing APIs`,
+          tools: "Express, GraphQL, Socket.IO, MongoDb, MySQL, Postman",
+        },
+      ];
+
+      for (let skill of skills) {
+        await this.renderSkillCard(skill);
       }
 
       this.$refs.controlArea.style.opacity = "1";
@@ -145,7 +242,7 @@ export default {
 
       // scroll to bottom
       newProjectContainer.scrollIntoView();
-      container.scrollTop = newProjectContainer.scrollHeight;
+      container.scrollTop = newProjectContainer.scrollHeight + 10;
       // animate return animation promise
       const finishAnimation = await animate(
         `.text${this.nodeNumber}`,
@@ -270,7 +367,7 @@ export default {
       newText.classList.add(`text${this.nodeNumber}`);
 
       newText.innerHTML = `<div class="resumeBlock">
-      <a href="https://mj-resume.tiiny.site/"><img src = "./assets/pdf.png"}/"><p> resume.pdf</p></a>
+      <a href="https://mj-resume.tiiny.site/"><img src = "https://i.ibb.co/mXW5kNt/pdf.png"}/"><p> resume.pdf</p></a>
       </div>`;
 
       container.appendChild(newText);
@@ -407,6 +504,7 @@ export default {
 @import "./assets/Sass/components/send-controls";
 @import "./assets/Sass/components/resume-block";
 @import "./assets/Sass/components/projectContainer";
+@import "./assets/Sass/components/skillCard";
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

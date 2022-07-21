@@ -2,10 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 200px;
+  max-width: 250px;
   margin: 0;
   background: floralwhite;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
 }
 
@@ -16,4 +16,11 @@
 .resumeBlock a {
   text-decoration: none;
   color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    margin-left: 10px;
+  }
 }

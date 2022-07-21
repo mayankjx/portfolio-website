@@ -1,0 +1,41 @@
+.skillCard {
+  width: 500px;
+  padding: 10px 0px 0px 20px;
+  text-align: left;
+
+  .skillHeader {
+    display: flex;
+    justify-content: flex-start;
+
+    img {
+      height: 50px;
+    }
+
+    .title {
+      align-self: flex-start;
+      margin-top: 10px;
+      margin-left: 20px;
+      font-size: 1.8rem;
+      font-weight: 600;
+      padding-bottom: 5px;
+      border-bottom: 3px solid rgb(66, 184, 131, 0.7);
+    }
+  }
+
+  .skillContent {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    border-left: 3px solid rgba(0, 0, 0, 0.8);
+    padding: 10px 15px;
+
+    .description {
+    }
+
+    .tools {
+      margin-top: 20px;
+    }
+  }
+}
+
+@media screen and(max-width:900px) {
+}
