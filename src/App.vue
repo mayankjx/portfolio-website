@@ -332,9 +332,10 @@ export default {
 
       await this.addNewTextMessage("How to contact you?", "senderMessage");
       const messages = [
-        "You can mail me on prototype.mayank@gmail.com",
-        "Connect with me on Linked in: https://www.linkedin.com/in/mayank-jhavre-5a713622a/",
-        "Follow me on GitHub: https://github.com/mayankjx",
+        "You can mail me on <a href=mailto:prototype.mayank@gmail.com>prototype.mayank@gmail.com</a>",
+        "Connect with me on <a href='https://www.linkedin.com/in/mayank-jhavre-5a713622a/'>LinkedIn</a>",
+        "Or follow me on <a href='https://github.com/mayankjx'>GitHub</a>",
+        "PS don't forget to star mark repos you come to like",
       ];
 
       for (let message of messages) {
