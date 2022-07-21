@@ -112,11 +112,11 @@ export default {
       }
 
       const messages = [
-        "Currently I m pursuing BTech degree in Computer Science and Engineering at IIITDM, Jabalpur",
-        "I m interested in web development and competitive coding",
+        "Currently I m pursuing BTech degree in Computer Science and Engineering at IIITDM, Jabalpur ",
+        "I m interested in web development and competitive coding 💻",
         "I like to code things from scratch, and enjoy bringing ideas to life.",
         "I m naturally curious and perpetually working on improving myself.",
-        "Apart from that I love to read books",
+        "Apart from that I love to read books 📙",
       ];
       await this.addNewTextMessage("Tell me more about you", "senderMessage");
       for (let message of messages) {
@@ -279,8 +279,7 @@ export default {
         },
         {
           title: "GitHub Timeline Tracker",
-          source:
-            "https://raw.githubusercontent.com/mayankjx/github-timeline-tracker/main/project-ss.png",
+          source: "https://i.ibb.co/6BfhCTM/project-ss-2.webp",
           description:
             "Track public activities and repository activities of any user of gitHub",
           repo: "https://github.com/mayankjx/github-timeline-tracker",
@@ -335,7 +334,7 @@ export default {
         "You can mail me on <a href=mailto:prototype.mayank@gmail.com>prototype.mayank@gmail.com</a>",
         "Connect with me on <a href='https://www.linkedin.com/in/mayank-jhavre-5a713622a/'>LinkedIn</a>",
         "Or follow me on <a href='https://github.com/mayankjx'>GitHub</a>",
-        "PS don't forget to star mark repos you come to like",
+        "PS don't forget to star mark repos you come to like 🌟",
       ];
 
       for (let message of messages) {
