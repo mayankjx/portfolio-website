@@ -1,5 +1,30 @@
 <template>
   <div class="wrapper">
+    <div class="svg-container">
+      <svg
+        width="400"
+        height="600"
+        viewBox="0 0 400 600"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g id="Frame">
+          <rect width="400" height="600" fill="white" />
+          <path
+            id="line"
+            class="line-animation"
+            d="M188 89C148 89 95 141 95 189C95 272 128 282 152 292C176 302 234 292 252 256C270 220 251.195 197.119 188 204C96.1583 214 76 244 76 318C76 370.953 76 397 76 439M76 439L53 411M76 439L101 411"
+            stroke="black"
+            stroke-width="5"
+            stroke-linejoin="round"
+          />
+        </g>
+      </svg>
+    </div>
+    <div class="tutorial">
+      <p>Click on the buttons below to continue the conversation</p>
+    </div>
+
     <div class="textAreaWrapper">
       <div class="textArea" id="chatArea" ref="textContainer">
         <TextBox className="text1">Hey there 👋</TextBox>
@@ -57,13 +82,6 @@ export default {
       nodeNumber: 8,
       message: "",
     };
-  },
-  mounted() {
-    window.addEventListener("keypress", (e) => {
-      console.log(e);
-      e.preventDefault();
-      this.$refs.messageBox.focus();
-    });
   },
   methods: {
     async addNewTextMessage(message, className) {
@@ -224,7 +242,7 @@ export default {
             <div class="about">
               <p class="title">${title}</p>
               <p class="description">
-                ${description} 
+                ${description}
               </p>
               <div class="links">
                 <a href=${repo}
@@ -494,7 +512,35 @@ export default {
       { easing: "ease-in" },
     ];
     const sequence = [text1, text2, text3, text4, text5, text6, text7];
-    const timelineAnimations = timeline(sequence, { endDelay: 0.3 });
+    const animateIntro = async () => {
+      const line = document.getElementById("line");
+      const text = document.querySelector(".tutorial");
+
+      line.classList.remove("line-animation");
+      line.style.display = "none";
+
+      text.style.opacity = "0";
+
+      const timelineAnimation = await timeline(sequence, { endDelay: 0.3 })
+        .finished;
+
+      const textAnimation = animate(
+        ".tutorial",
+        { opacity: 1 },
+        { duration: 1 },
+        { easing: "ease-in" }
+      );
+
+      line.style.display = "block";
+      line.classList.add("line-animation");
+
+      window.addEventListener("click", () => {
+        line.style.display = "none";
+        text.style.display = "none";
+      });
+    };
+
+    animateIntro();
   },
 };
 </script>
@@ -505,6 +551,7 @@ export default {
 @import "./assets/Sass/components/resume-block";
 @import "./assets/Sass/components/projectContainer";
 @import "./assets/Sass/components/skillCard";
+@import "./assets/Sass/components/line";
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -519,6 +566,12 @@ export default {
 
 .wrapper {
   height: 100%;
+
+  svg {
+    position: absolute;
+    left: 60%;
+    top: 25%;
+  }
 }
 
 @media screen and (max-width: 768px) {
