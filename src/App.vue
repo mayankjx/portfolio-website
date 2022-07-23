@@ -11,7 +11,9 @@
         <TextBox className="text5"
           >You have questions for me?
           <span class="highlight-container"
-            ><span class="highlight">Use buttons below to ask me...</span></span
+            ><span class="highlight" id="highlightedText"
+              >Use buttons below to ask me...</span
+            ></span
           ></TextBox
         >
         <TextBox className="text6" v-bind:sender="false"
@@ -60,13 +62,6 @@ export default {
       nodeNumber: 8,
       message: "",
     };
-  },
-  mounted() {
-    window.addEventListener("keypress", (e) => {
-      console.log(e);
-      e.preventDefault();
-      this.$refs.messageBox.focus();
-    });
   },
   methods: {
     async addNewTextMessage(message, className) {

@@ -22,7 +22,6 @@
   border: none;
   outline: none;
   border-radius: 20px;
-  width: 50%;
 }
 
 .sendControls button {
@@ -55,15 +54,21 @@
   #message {
     font-size: 1rem;
     padding: 5px 12px;
-    width: 70%;
+    max-width: 70%;
   }
 
   .sendControls {
     padding: 10px;
     font-size: 1rem;
 
+    button {
+      font-size: 0.9rem;
+      padding: 10px 10px;
+      border-radius: 6px;
+    }
+
     input {
-      padding: 10px 0px;
+      width: 58%;
     }
   }
 }
