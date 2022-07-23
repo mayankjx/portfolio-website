@@ -9,7 +9,10 @@
           >I m currently looking for an internship</TextBox
         >
         <TextBox className="text5"
-          >You have questions for me? Feel free to ask..</TextBox
+          >You have questions for me?
+          <span class="highlight-container"
+            ><span class="highlight">Use buttons below to ask me...</span></span
+          ></TextBox
         >
         <TextBox className="text6" v-bind:sender="false"
           >Have a nice day ✨</TextBox
@@ -144,7 +147,7 @@ export default {
                 alt="logo"
                 srcset=""
               />
-              <p class="title">${title}</p>
+              <p class="title"><strong>${title}</strong></p>
             </div>
             <div class="skillContent">
               <p class="description">
@@ -460,7 +463,7 @@ export default {
           "translateX(10px) scale(1.2)",
           "translateX(10px) scale(1)",
         ],
-        width: ["0", "30rem"],
+        width: ["0", "45rem"],
       },
       { duration: 2 },
       { easing: "ease-in" },
