@@ -1,7 +1,7 @@
 # Personal Portfolio
 
 This is my personal Portfolio website having all the information about me, technologies I used and projects I made. I tried to replicate the texting style conversation.
-The website is designed is from scratch all the HTML, CSS and Javascript is written from scratch.
+The website is designed from scratch all the HTML, CSS and Javascript is written from scratch.
 
 ## Tech stack
 
