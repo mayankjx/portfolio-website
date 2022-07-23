@@ -50,6 +50,12 @@
   }
 }
 
+@media screen and (min-width: 1244px) {
+  #message {
+    width: 50%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   #message {
     font-size: 1rem;
